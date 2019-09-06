@@ -1,0 +1,10 @@
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error:  in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 41
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagecreatefromjpeg(): '../../../joimg/hubungikami/861682444091home.png' is not a valid JPEG file in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 41
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 42
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 43
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  Division by zero in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 48
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagecreatetruecolor(): Invalid image dimensions in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 51
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 52
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagejpeg() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 55
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagedestroy() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 58
+[30-Nov-2016 02:10:44 America/Chicago] PHP Warning:  imagedestroy() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 59

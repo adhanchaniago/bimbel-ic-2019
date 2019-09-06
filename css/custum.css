@@ -1,0 +1,73 @@
+.hero-slider {
+    height: 500px;
+}
+.hero-slider.flexslider ul.slides li {
+    height: 500px;
+}
+
+/*custum slider*/
+.nav-arrows a {
+    left: 10%;
+}
+.nav-arrows a:first-child {
+    right: 10%;
+}
+.sb-description {
+    padding: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 1000;
+    position: absolute;
+    background: #D8D8D8;
+    background: rgba(255, 255, 255, 0.68);
+    border-left: 4px solid rgba(255,255,255,0.7);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    color: #fff;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -o-transition: all 200ms;
+    -ms-transition: all 200ms;
+    transition: all 200ms;
+}
+.sb-slider li.sb-current .sb-description:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+    filter: alpha(opacity=99);
+    background: rgba(249, 244, 192, 0.7);
+}
+.slide-description{
+    margin: 0 0 0 0;
+}
+.p-slide{
+    margin-bottom: 0px;
+	color:#000000;
+}
+/*testimonial*/
+.testimonials > li > p {
+    border: 1px solid #F4BA4D;
+}
+.testimonials > li > p:before {
+    bottom: -11px;
+    right: 29px;
+    border-top-color: #F4BA4D;
+    border-width: 11px;
+}
+/*costum navigation*/
+.navigation > ul > li > a {
+    padding: 15px 18px;
+}
+
+/*costum header*/
+.top-header {
+    height: 10px;
+}
+
+.aktif{
+	color: #D23E13;
+}
+
+.badge {
+  border-radius: 4px;
+}

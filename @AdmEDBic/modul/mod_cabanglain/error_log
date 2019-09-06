@@ -1,0 +1,20 @@
+[08-Nov-2016 14:59:43 Asia/Jakarta] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/@AdmEDBic/modul/mod_testimoni/aksi_testimoni.php on line 27
+[05-Jan-2017 09:29:08 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/604247mCND5jY.jpg): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 32
+[05-Jan-2017 09:29:08 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/small_604247mCND5jY.jpg): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 33
+[05-Jan-2017 09:29:16 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/5255437mCND5jY.jpg): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 32
+[05-Jan-2017 09:29:16 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/small_5255437mCND5jY.jpg): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 33
+[05-Jan-2017 09:29:22 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/418097mCND5jY.jpg): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 32
+[05-Jan-2017 09:29:22 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/small_418097mCND5jY.jpg): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 33
+[05-Jan-2017 09:29:30 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/7776797mCND5jY.jpg): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 32
+[05-Jan-2017 09:29:30 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/small_7776797mCND5jY.jpg): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 33
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error:  in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 488
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagecreatefromjpeg(): '../../../joimg/cabanglain/131701Screenshot_2017-01-05-11-03-03.png' is not a valid JPEG file in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 488
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 489
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 490
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  Division by zero in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 495
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagecreatetruecolor(): Invalid image dimensions in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 498
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 499
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagejpeg() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 502
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagedestroy() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 505
+[05-Jan-2017 11:12:50 Asia/Jakarta] PHP Warning:  imagedestroy() expects parameter 1 to be resource, boolean given in /home/bimbelic/public_html/josys/fungsi_thumb.php on line 506
+[05-Jan-2017 11:14:08 Asia/Jakarta] PHP Warning:  unlink(../../../joimg/cabanglain/small_131701Screenshot_2017-01-05-11-03-03.png): No such file or directory in /home/bimbelic/public_html/@AdmEDBic/modul/mod_cabanglain/aksi_cabanglain.php on line 63

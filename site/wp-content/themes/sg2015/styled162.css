@@ -1,0 +1,16 @@
+/*
+  Theme Name: SG 2015
+  Theme URI: http://salembagroup.com/
+  Author: MahirCom
+  Author URI: http://mahircom.com/
+  Version: 2015.10.13
+*/
+
+.m-footer-widget > .content {
+  text-align: justify;
+  line-height: 1.80em;
+}
+
+#s-share-buttons {
+  margin-top: 30px;
+}
