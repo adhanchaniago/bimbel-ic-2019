@@ -18,7 +18,7 @@ else { ?>
 
 <script>
 $(document).ready( function () {
-     var oTable = $('#example').dataTable( {
+     var oTable = $('#dataTable').dataTable( {
                     "bJQueryUI": true,
                     "sPaginationType": "full_numbers",
 				} );		
@@ -37,7 +37,7 @@ $(document).ready( function () {
 				
 			</header>
 
-			<table class='display' id='example'>
+			<table class='display' id='dataTable'>
 			<thead> 
 				<tr>  
     				<th>No</th>
@@ -50,9 +50,8 @@ $(document).ready( function () {
 			<tbody> 
 			<?php 	
 				$no=1;
-				$sosmed = mysql_query("SELECT * FROM hubungikami ORDER BY id_hubungikami DESC");
-				while($s=mysql_fetch_array($sosmed)){
-				
+				$rows = get_all("SELECT * FROM hubungikami ORDER BY id_hubungikami DESC");
+				foreach ($rows as $key => $s) {				
 				?>
 				<tr>  
     				<th><?php echo"$no" ?></th>
@@ -75,21 +74,24 @@ $(document).ready( function () {
 		</article>		
 		
 		<article style="min-width:260px;" class="module width_quarter">
-			 <header><h3>Post Hubungikami</h3></header>
-			 <form method='POST' enctype='multipart/form-data' action='modul/mod_hubungikami/aksi_hubungikami.php?module=hubungikami&act=insertnew'>
+			<header><h3>Post Hubungikami</h3></header>
+			<form method='POST' enctype='multipart/form-data' action='modul/mod_hubungikami/aksi_hubungikami.php?module=hubungikami&act=insertnew'>	
+				<table>
+					<tr>
+						<td>Alamat :</td>
+					</tr>
+					<tr>
+						<td><textarea name="alamat"></textarea></td>
+					</tr>
+				</table>
 				<div class="module_content">
-						<fieldset>
-							<label>Alamat</label>
-							<textarea name="alamat"></textarea>
-							
-						</fieldset>
-						<fieldset style="float:left; width:30%; margin-right: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
-							<label>Icon Link terkait</label><br /><br />
-							<input style="margin-left:10px; margin-right:-20px;" type="file" name="fupload" required>
-							<br /> &nbsp;&nbsp;&nbsp;&nbsp;*) Image size 40 x 40px. Type Img : JPEG
-						</fieldset>
-						<style>fieldset input[type=text]{width:87%} fieldset textarea {width:85%}</style>
-						<div class="clear"></div>
+					<fieldset style="float:left; width:30%; margin-right: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
+						<label>Icon Link terkait</label><br /><br />
+						<input style="margin-left:10px; margin-right:-20px;" type="file" name="fupload" required>
+						<br /> &nbsp;&nbsp;&nbsp;&nbsp;*) Image size 40 x 40px. Type Img : JPEG
+					</fieldset>
+						<!-- <style>fieldset input[type=text]{width:87%} fieldset textarea {width:85%}</style>
+						<div class="clear"></div> -->
 				</div>
 			<footer>
 				<div class="submit_link">
@@ -101,8 +103,7 @@ $(document).ready( function () {
 
 		<?php break; 
 		case"edit":
-			$sosmed = mysql_query("SELECT * FROM hubungikami WHERE id_hubungikami='$_GET[id]'");
-			$g=mysql_fetch_array($sosmed);
+			$g= get_one("SELECT * FROM hubungikami WHERE id_hubungikami='$_GET[id]'");
 		
 		?>
 		
