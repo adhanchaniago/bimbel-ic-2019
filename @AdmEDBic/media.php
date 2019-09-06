@@ -14,9 +14,10 @@ else{
 
 <head>
 	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard Admin Panel</title>
 	
-	<link rel="stylesheet" href="css/layout.css?v=0.1" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/layout.css?v=0.3" type="text/css" media="screen" />
 	<link rel="shortcut icon" type="image/x-icon" href="../joimg/favicon.png" />
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
