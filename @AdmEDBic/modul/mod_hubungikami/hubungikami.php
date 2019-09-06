@@ -31,14 +31,6 @@
 			switch($_GET[act]){
 				default:
 			?>
-			<div class="row">
-				<div class="col-9">
-					left
-				</div>
-				<div class="col-3">
-					right
-				</div>
-			</div>
 
 				<article style="max-width:660px;" class="module width_3_quarter">
 				<header><h3 class="tabs_involved">Hubungi Kami</h3>
@@ -82,26 +74,22 @@
 			</article>		
 			
 			<article style="min-width:260px;" class="module width_quarter">
-				<header><h3>Post Hubungikami</h3></header>
+				<header><h3>Post Hubungi Kami</h3></header>
 				<form method='POST' enctype='multipart/form-data' action='modul/mod_hubungikami/aksi_hubungikami.php?module=hubungikami&act=insertnew'>	
 					<div class="p-1">
-						<label for="" class="w-100">Alamat :</label>
-						<textarea name="alamat" class="w-100 p-1"></textarea>
+						<label for="" class="d-block">Alamat :</label>
+						<textarea class="p-1 w-90" name="alamat" id="" cols="30" rows="10" placeholder="Masukan alamat ..." required=""></textarea>
 					</div>
-					<div class="module_content">
-						<fieldset style="float:left; width:30%; margin-right: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
-							<label>Icon Link terkait</label><br /><br />
-							<input style="margin-left:10px; margin-right:-20px;" type="file" name="fupload" required>
-							<br /> &nbsp;&nbsp;&nbsp;&nbsp;*) Image size 40 x 40px. Type Img : JPEG
-						</fieldset>
-							<!-- <style>fieldset input[type=text]{width:87%} fieldset textarea {width:85%}</style>
-							<div class="clear"></div> -->
+					<div class="p-1">
+						<label for="" class="d-block">Icon :</label>
+						<input type="file" name="fupload" required>
+						<span class="d-block">*) Image size 40 x 40px. Type Img : JPEG</span>
 					</div>
-				<footer>
-					<div class="submit_link">
-						<input type="submit" value="Publish" class="alt_btn">
-					</div>
-				</footer>
+					<footer>
+						<div class="submit_link">
+							<input type="submit" value="Publish" class="alt_btn">
+						</div>
+					</footer>
 				</form>
 			</article><!-- end of post new article -->
 
@@ -112,35 +100,31 @@
 			?>
 			
 			<article class="module width_quarter">
-				<header><h3 class="tabs_involved">Edit Link Terkait</h3>
+				<header><h3 class="tabs_involved">Edit Hubungi Kami</h3>
 					
 					<input style="float:right; margin-top:5px;margin-right:10px;" type='button'  class='tombol' value='Back' onclick='self.history.back()'>
 					
 				</header>
 				<form method='POST' enctype='multipart/form-data' action='modul/mod_hubungikami/aksi_hubungikami.php?module=hubungikami&act=update'>
 					<input type='hidden' name='id' value='<?php echo"$g[id_hubungikami]" ?>'>
-					<div class="module_content">
-							<fieldset>
-								<label>alamat</label>
-								<input name="alamat" type="text" value="<?php echo"$g[alamat]" ?>">
-							</fieldset>
-							<fieldset style="float:left; width:30%; margin-right: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
-								<label>Icon Link Terkait</label><br /><br />
-								<img width="200px" style="margin-left:5px;" src="../joimg/hubungikami/<?php echo"$g[gambar]" ?>">
-							</fieldset>
-							<fieldset style="float:left; width:30%; margin-right: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
-								<label>Change Icon Link Terkait</label><br /><br />
-								<input style="margin-left:10px; margin-right:-20px;" type="file" name="fupload">
-								<br /> &nbsp;&nbsp;&nbsp;&nbsp;*) Image size 40 x 40px.
-							</fieldset>	
-							<style>fieldset input[type=text]{width:87%} fieldset textarea {width:85%}</style>
-							<div class="clear"></div>
+					<div class="p-1">
+						<label class="d-block">Alamat :</label>
+						<textarea class="w-90 p-1" name="alamat" id="" cols="30" rows="10" placeholder="Masukan alamat ..." required=""><?php echo"$g[alamat]" ?></textarea>
 					</div>
-				<footer>
-					<div class="submit_link">
-						<input type="submit" value="Update" class="alt_btn">
+					<div class="p-1">
+						<label class="d-block">Icon :</label>
+						<img width="30px" style="margin-left:5px;" src="../joimg/hubungikami/<?php echo"$g[gambar]" ?>">
 					</div>
-				</footer>
+					<div class="p-1">
+						<label class="d-block">Change Icon :</label>
+						<input type="file" name="fupload">
+						<span class="d-block">*) Image size 40 x 40px.</span>
+					</div>
+					<footer>
+						<div class="submit_link">
+							<input type="submit" value="Update" class="alt_btn">
+						</div>
+					</footer>
 				</form>
 			</article>
 			<br />
