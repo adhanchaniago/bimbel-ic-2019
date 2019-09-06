@@ -38,18 +38,17 @@
                 			<table border='0' width="100%">
               				 	<tr>
             				 	<?php
-                                    $sql_linkterkait="select * from linkterkait ";
-                                    $result_linkterkait=mysql_query($sql_linkterkait);
+                                    $rows= get_all("select * from linkterkait ");
                                     $i=0;
-                                    while($data_linkterkai=mysql_fetch_assoc($result_linkterkait)){
+                                    foreach($rows AS $key => $value){
                                     $i++;
 
                 				 	?>
             				 	    <td width="20%">
-                                        <a href="<?php echo $data_linkterkai['link']; ?>" target="_BLANK" class="thumbnail" id="carousel-selector-1">
-                                            <img src="joimg/linkterkait/<?php echo $data_linkterkai['gambar']; ?>" style="width: 100%;">
+                                        <a href="<?php echo $value['link']; ?>" target="_BLANK" class="thumbnail" id="carousel-selector-1">
+                                            <img src="joimg/linkterkait/<?php echo $value['gambar']; ?>" style="width: 100%;">
                                         </a>
-                  				 	    <p style="text-align: center;"><?php echo $data_linkterkai['nama']; ?></p>
+                  				 	    <p style="text-align: center;"><?php echo $value['nama']; ?></p>
             				 	    </td>
             				 	  
                                     <?php
@@ -76,13 +75,12 @@
                             <p>
                                 <table border='0'>
                                 <?php
-                                    $sql_hubungikami="SELECT * FROM hubungikami ORDER BY id_hubungikami DESC";
-                                    $result_hubungikami=mysql_query($sql_hubungikami);
-                                    while($data_hubungikami=mysql_fetch_assoc($result_hubungikami)){
+                                    $rows= get_all("SELECT * FROM hubungikami ORDER BY id_hubungikami DESC");
+                                    foreach($rows AS $key => $value){
                                     ?>
                                         <tr>
-                                            <td><img src="joimg/hubungikami/<?php echo $data_hubungikami['gambar']; ?>"></td>
-                                            <td><?php echo $data_hubungikami['alamat']; ?></td>
+                                            <td><img src="joimg/hubungikami/<?php echo $value['gambar']; ?>"></td>
+                                            <td><?php echo $value['alamat']; ?></td>
                                         </tr>
                                     <?php
                                     }
@@ -111,7 +109,7 @@
             <div class="u-row">
 
                 <!-- left footer bottom -->
-                <div class="column">
+                <!-- <div class="column"> -->
                 <?php
                     $ip      = $_SERVER['REMOTE_ADDR']; // Mendapatkan IP komputer user
                     date_default_timezone_set('Asia/Jakarta');
@@ -126,15 +124,15 @@
                     $bataswaktu       = time() - 300;
                     $pengunjungonline = mysql_num_rows(mysql_query("SELECT online FROM statistik WHERE online > '$bataswaktu'"));
                 ?>
-                    <table class="cs-tb-footer-bottom">
+                    <!-- <table class="cs-tb-footer-bottom">
                         <tr>
                             <td>Hits hari ini</td>
                             <td>:</td>
-                            <td><?php echo "$hits"; ?></td>
+                            <td><?php //echo "$hits"; ?></td>
                             <td>&nbsp;</td>
                             <td>Pengunjung hari ini</td>
                             <td>:</td>
-                            <td><?php echo "$pengunjung"; ?></td>
+                            <td><?php //echo "$pengunjung"; ?></td>
 
                         </tr>
                         <tr>
@@ -143,28 +141,28 @@
                         <tr>
                             <td>Total hits</td>
                             <td>:</td>
-                            <td><?php echo "$totalhits"; ?></td>
+                            <td><?php //echo "$totalhits"; ?></td>
                             <td>&nbsp;</td>
                             <td>Total pengunjung</td>
                             <td>:</td>
-                            <td><?php echo "$totalpengunjung"; ?></td>
+                            <td><?php //echo "$totalpengunjung"; ?></td>
                         </tr>
-                    </table>
-                </div>
+                    </table> -->
+                <!-- </div> -->
                 <!-- end left footer bottom -->
 
                 <!-- right footer bottom -->
                 <div class="column">
                     <div class="m-social cs-social">
-                      <p class="title">Connect with us</p>
-                      <ul>
-                        <li><a href="http://twitter.com/Indo_College" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="http://www.facebook.com/bimbelstanjaminan" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://www.youtube.com/channel/UCq8G3UVU7aqEqXL9F2uJG7Q" target="_blank" class="youtube"><i class="fa fa-youtube-play"></i></a></li>
-                        <li><a href="https://www.instagram.com/indonesiacollege_yogya/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
+                        <p class="title">Connect with us</p>
+                        <ul>
+                            <li><a href="http://twitter.com/Indo_College" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="http://www.facebook.com/bimbelstanjaminan" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCq8G3UVU7aqEqXL9F2uJG7Q" target="_blank" class="youtube"><i class="fa fa-youtube-play"></i></a></li>
+                            <li><a href="https://www.instagram.com/indonesiacollege_yogya/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                        <p class="copyright" style="text-align: right;">&copy; 2016 IC. All Rights Reserved. Developed by <a href="http://jogjasite.com/">JogjaSite</a></p>
                     </div>
-                    <p class="copyright" style="text-align: right;">&copy; 2016 IC. All Rights Reserved. Developed by <a href="http://jogjasite.com/">JogjaSite</a></p>
                 </div>
                 <!-- end right footer bottom -->
             
