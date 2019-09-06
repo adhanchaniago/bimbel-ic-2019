@@ -11,7 +11,7 @@ else { ?>
 <script type="text/javascript">
 tinymce.init({
   selector: 'textarea',
-  height: 150,
+  height: 450,
   theme: 'modern',
   plugins: [
     'advlist autolink lists link image charmap print preview hr anchor pagebreak',

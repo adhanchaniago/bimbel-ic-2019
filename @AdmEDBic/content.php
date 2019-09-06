@@ -222,6 +222,11 @@ elseif ($_GET['module']=='asrama'){
     include "modul/mod_asrama/asrama.php";
   }
 }
+elseif ($_GET['module']=='informasi-bimbel'){
+  if ($_SESSION['leveluser']=='admin'){
+    include "modul/mod_informasi_bimbel/informasi_bimbel.php";
+  }
+}
 //MENU PROGRAM END 
 
 // Bagian konsultasi

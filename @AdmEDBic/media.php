@@ -268,11 +268,10 @@ else{
 				<li class="icn_categories"><a href="?module=confirmation">Daftar Online</a></li>
 				<li class="icn_categories"><a href="?module=bimbingan">Bimbingan</a></li>
 				<li class="icn_categories"><a href="?module=tbprogram">Program</a></li>
-				
 				<li class="icn_categories"><a href="?module=kelas">Kelas</a></li>
-				
 				<li class="icn_categories"><a href="?module=tempatprogram">Tempat Program</a></li>
 				<li class="icn_categories"><a href="?module=asrama">Asrama</a></li>
+				<li class="icn_categories"><a href="?module=informasi-bimbel">Informasi Bimbel</a></li>
 			</ul> 
 			<!--
 		<h3>Menu Product</h3>
