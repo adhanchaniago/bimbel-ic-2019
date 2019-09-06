@@ -16,7 +16,7 @@ else{
 	<meta charset="utf-8"/>
 	<title>Dashboard Admin Panel</title>
 	
-	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/layout.css?v=0.1" type="text/css" media="screen" />
 	<link rel="shortcut icon" type="image/x-icon" href="../joimg/favicon.png" />
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
