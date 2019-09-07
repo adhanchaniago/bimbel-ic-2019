@@ -1,27 +1,23 @@
 <?php
 
-  $nama_peserta=htmlspecialchars($_POST['nama_peserta']);
-  $tempat_lahir=htmlspecialchars($_POST['tempat_lahir']);
-  $birth_date=htmlspecialchars($_POST['tanggal_lahir']);
-  // $date = '25/05/2010';
-  // $date = str_replace('/', '-', $birth_date);
-  $tanggal_lahir= date('Y-m-d', strtotime($birth_date));
-  // echo "$tanggal_lahir".'<br>';
-  // echo "$birth_date";
-  // die();
-  $jenis_kelamin=htmlspecialchars($_POST['jenis_kelamin']);
-  $alamat=htmlspecialchars($_POST['alamat_rumah']);
-  $no_hp_peserta=htmlspecialchars($_POST['no_hp_peserta']);
-  $email=htmlspecialchars($_POST['email']);
-  $asal_sekolah=htmlentities($_POST['asal_sekolah']);
-  $nama_ortu=htmlspecialchars($_POST['nama_ortu']);
-  $pekerjaan=htmlspecialchars($_POST['pekerjaan']);
-  $no_hp_ortu=htmlspecialchars($_POST['no_hp_ortu']);
-  $bimbingan=htmlspecialchars($_POST['bimbingan']);
-  $program=htmlspecialchars($_POST['program']);
-  $kelas=htmlspecialchars($_POST['kelas']);
-  $tempat_program=htmlspecialchars($_POST['tempat_program']);
-  $asrama=htmlspecialchars($_POST['asrama']);
+  $nama_peserta       = htmlspecialchars($_POST['nama_peserta']);
+  $tempat_lahir       = htmlspecialchars($_POST['tempat_lahir']);
+  $birth_date         = htmlspecialchars($_POST['tanggal_lahir']);
+  $tanggal_lahir      = date('Y-m-d', strtotime($birth_date));
+  $jenis_kelamin      = htmlspecialchars($_POST['jenis_kelamin']);
+  $alamat             = htmlspecialchars($_POST['alamat_rumah']);
+  $no_hp_peserta      = htmlspecialchars($_POST['no_hp_peserta']);
+  $email              = htmlspecialchars($_POST['email']);
+  $asal_sekolah       = htmlentities($_POST['asal_sekolah']);
+  $nama_ortu          = htmlspecialchars($_POST['nama_ortu']);
+  $pekerjaan          = htmlspecialchars($_POST['pekerjaan']);
+  $no_hp_ortu         = htmlspecialchars($_POST['no_hp_ortu']);
+  $bimbingan          = htmlspecialchars($_POST['bimbingan']);
+  $program            = htmlspecialchars($_POST['program']);
+  $kelas              = htmlspecialchars($_POST['kelas']);
+  $tempat_program     = htmlspecialchars($_POST['tempat_program']);
+  $asrama             = htmlspecialchars($_POST['asrama']);
+  $get_information_id = htmlspecialchars($_POST['get_information_id']);
 
   //Foto Peserta Start
   $lokasi_file    = $_FILES['foto_peserta']['tmp_name'];
@@ -62,30 +58,22 @@
                         '$program',
                         '$kelas',
                         '$tempat_program',
-                        '$asrama',NOW())";
+                        '$asrama',
+                        '$get_information_id',
+                        NOW())";
                         //  echo $sql; exit;
    $result=mysql_query($sql);
    //if($result){
 
 
-    //mail body - image position, background, font color, font size...
-   $sql_bimbingan=mysql_query("select * from tb_bimbingan where bimbingan_id='".$bimbingan."'");
-   $data_bimbingan=mysql_fetch_assoc($sql_bimbingan);
-
-   $sql_program=mysql_query("select * from tb_program where program_id='".$program."'");
-   $data_program=mysql_fetch_assoc($sql_program);
-
-   $sql_kelas=mysql_query("select * from tb_kelas where kelas_id='".$kelas."'");
-   $data_kelas=mysql_fetch_assoc($sql_kelas);
-
-   $sql_tempatprogram=mysql_query("select * from tb_tempatprogram where tempat_program_id='".$tempat_program."'");
-   $data_tempatprogram=mysql_fetch_assoc($sql_tempatprogram);
-
-   $sql_asrama=mysql_query("select * from tb_asrama where asrama_id='".$asrama."'");
-   $data_asrama=mysql_fetch_assoc($sql_asrama);
-
-  $user = mysql_query("SELECT email FROM users WHERE username='admin'");
-  $g=mysql_fetch_object($user);
+  //mail body - image position, background, font color, font size...
+  $data_bimbingan    = get_one("select * from tb_bimbingan where bimbingan_id='".$bimbingan."'");
+  $data_program      = get_one("select * from tb_program where program_id='".$program."'");
+  $data_kelas        = get_one("select * from tb_kelas where kelas_id='".$kelas."'");
+  $data_tempatprogram= get_one("select * from tb_tempatprogram where tempat_program_id='".$tempat_program."'");
+  $data_asrama       = get_one("select * from tb_asrama where asrama_id='".$asrama."'");
+  $get_information   = get_one("select * from get_informations where get_information_id='".$get_information_id."'");
+  $g                 = get_one("SELECT email FROM users WHERE username='admin'");
 
 
 
@@ -179,6 +167,11 @@
           <td>'.$data_asrama['asrama_name'].'</td>
         </tr>
         <tr>
+          <td>saya dapat info bimbel dari</td>
+          <td>  : </td>
+          <td>'.$get_information['text'].'</td>
+        </tr>
+        <tr>
           <td>Date</td>
           <td>  : </td>
           <td>'.date('Y-m-d').'</td>
@@ -191,7 +184,7 @@
     $headers='MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html;charset=iso-8859-1' . "\r\n";
     $headers .= 'From: '.$nama_peserta.' <'.$email.'>' . "\r\n";
-    $to = $g->email;
+    $to = $g['email'];
     $subject = "Formulir Pendaftaran Online";
     //mail function
     $mail = mail($to, $subject, $body, $headers);

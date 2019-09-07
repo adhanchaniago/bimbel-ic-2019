@@ -14,7 +14,7 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
 
 ?>
 <div class="u-row">
-<div class="u-col -t-2-3"><div role="form" class="wpcf7" id="wpcf7-f273-p71-o1" lang="id-ID" dir="ltr">
+<div class="u-colX -t-2-3"><div role="form" class="wpcf7" id="wpcf7-f273-p71-o1" lang="id-ID" dir="ltr">
 <div class="screen-reader-response"></div>
 <form name="formulir" action="proses-daftar.html" method="POST" enctype="multipart/form-data" onSubmit="return validasi()">
 <div style="display: none;">
@@ -24,13 +24,13 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
     <tr>
         <td>Nama Peserta</td>
         <td>:</td>
-        <td><input type="text" name="nama_peserta" style="width: 88%;" required></td>
+        <td><input placeholder="Masukan nama ..." type="text" name="nama_peserta" style="width: 88%;" required></td>
     </tr>
 
     <tr>
         <td>Tempat Lahir</td>
         <td>:</td>
-        <td><input type="text" name="tempat_lahir" required></td>
+        <td><input placeholder="Masukan tempat lahir..." type="text" name="tempat_lahir" required></td>
     </tr>
 
     <tr>
@@ -49,55 +49,55 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
     <tr>
         <td>Alamat Rumah</td>
         <td>:</td>
-        <td><textarea name="alamat_rumah" style="width: 88%;height: 118%;" required></textarea></td>
+        <td><textarea placeholder="Masukan alamat lengkap..." name="alamat_rumah" style="width: 88%;height: 118%;" required></textarea></td>
     </tr>
 
     <tr>
         <td>No Hp Peserta</td>
         <td>:</td>
-        <td><input type="text" name="no_hp_peserta" style="width: 60%;" required></td>
+        <td><input placeholder="+628123456789" type="text" name="no_hp_peserta" style="width: 60%;" required></td>
     </tr>
 
     <tr>
         <td>Email</td>
         <td>:</td>
-        <td><input type="email" name="email" style="width: 70%;" required></td>
+        <td><input placeholder="email@gmail.com" type="email" name="email" style="width: 70%;" required></td>
     </tr>
 
     <tr>
         <td>Asal Sekolah</td>
         <td>:</td>
-        <td><input type="text" name="asal_sekolah" style="width: 70%;" required></td>
+        <td><input placeholder="Masukan nama asal sekolah" type="text" name="asal_sekolah" style="width: 70%;" required></td>
     </tr>
 
     <tr>
         <td>Foto Peserta</td>
         <td>:</td>
-        <td><input type="file" name="foto_peserta"  required></td>
+        <td><input type="file" name="foto_peserta"  required>(type file: '*.jpg')</td>
     </tr>
 
     <tr>
         <td>Bukti Pembayaran</td>
         <td>:</td>
-        <td><input type="file" name="bukti_bayar" required></td>
+        <td><input type="file" name="bukti_bayar" required>(type file: '*.jpg')</td>
     </tr>
 
     <tr>
         <td>Nama Orang Tua</td>
         <td>:</td>
-        <td><input type="text" name="nama_ortu" style="width: 88%;" required></td>
+        <td><input placeholder="Masukan nama orang tua" type="text" name="nama_ortu" style="width: 88%;" required></td>
     </tr>
 
     <tr>
         <td>Pekerjaan</td>
         <td>:</td>
-        <td><input type="text" name="pekerjaan" style="width: 88%;" required></td>
+        <td><input placeholder="Masukan nama pekerjaan orang tua" type="text" name="pekerjaan" style="width: 88%;" required></td>
     </tr>
 
     <tr>
         <td>No Hp Ortu</td>
         <td>:</td>
-        <td><input type="text" name="no_hp_ortu" style="width: 88%;" required></td>
+        <td><input placeholder="+628123456789" type="text" name="no_hp_ortu" style="width: 88%;" required></td>
     </tr>
 
     <tr>
@@ -107,9 +107,9 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
                     <option value="">- Pilih Bimbingan -</option>
                     <?php
                         //mengambil nama-nama propinsi yang ada di database
-                        $propinsi = mysql_query("SELECT * FROM tb_bimbingan ORDER BY bimbingan_id DESC");
-                        while($p=mysql_fetch_assoc($propinsi)){
-                        echo "<option value=\"$p[bimbingan_id]\">$p[bimbingan_name]</option>\n";
+                        $rows = get_all("SELECT * FROM tb_bimbingan ORDER BY bimbingan_id DESC");
+                        foreach ($rows as $key => $p) {
+                        echo "<option value=\"{$p['bimbingan_id']}\">{$p['bimbingan_name']}</option>\n";
                         }
                     ?>
                 </select>
@@ -140,10 +140,9 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
                 <select name="tempat_program" id="tempat_program">
                     <option value="">- Pilih Tempat Program -</option>
                     <?php
-                    $sql_tempat_program="SELECT * FROM tb_tempatprogram ORDER BY tempat_program_id DESC ";
-                    $result_tempat_program=mysql_query($sql_tempat_program);
-                    while($data_tempat_program=mysql_fetch_assoc($result_tempat_program)){
-                        echo "<option value=\"$data_tempat_program[tempat_program_id]\">$data_tempat_program[tempat_program_name]</option>\n";
+                    $rows= get_all("SELECT * FROM tb_tempatprogram ORDER BY tempat_program_id DESC ");
+                    foreach ($rows as $key => $value) {
+                        echo "<option value=\"{$value['tempat_program_id']}\">{$value['tempat_program_name']}</option>\n";
                     }
                     ?>
                 </select>
@@ -157,15 +156,31 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
                 <option value=""> - Pilih Asrama - </option>
                    <?php
                     //mengambil nama-nama propinsi yang ada di database
-                    $asrama = mysql_query("SELECT * FROM tb_asrama ORDER BY asrama_id DESC");
-                    while($data_asrama=mysql_fetch_assoc($asrama)){
-                    echo "<option value=\"$data_asrama[asrama_id]\">$data_asrama[asrama_name]</option>\n";
+                    $rows = get_all("SELECT * FROM tb_asrama ORDER BY asrama_id DESC");
+                    foreach ($rows as $key => $value) {
+                        echo "<option value=\"{$value['asrama_id']}\">{$value['asrama_name']}</option>\n";
                     }
                 ?>
             </select>
             <!-- <span><i>*) ketersediaan asrama</i></span> -->
         </td>
     </tr>
+
+    <tr>
+        <td>Saya dapat info bimbel dari</td>
+        <td colspan="2">:</td>
+    </tr>
+    <?php
+        $rows= get_all("SELECT * FROM get_informations");
+        foreach ($rows as $key => $value) {
+            echo "
+            <tr>
+                <td colspan='2'></td>
+                <td><input type='radio' name='get_information_id' value='{$value['get_information_id']}'> {$value['texts']}</td>
+            </tr>
+            ";
+        }
+    ?>
     
      <tr>
         <td></td>
