@@ -169,7 +169,7 @@
         <tr>
           <td>saya dapat info bimbel dari</td>
           <td>  : </td>
-          <td>'.$get_information['text'].'</td>
+          <td>'.$get_information['texts'].'</td>
         </tr>
         <tr>
           <td>Date</td>
