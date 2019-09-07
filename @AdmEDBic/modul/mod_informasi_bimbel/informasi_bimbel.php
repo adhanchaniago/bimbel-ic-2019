@@ -1,9 +1,10 @@
-	<?php
-	session_start();
+<?php
 	if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])){
-	echo "<link href='style.css' rel='stylesheet' type='text/css'>
-	<center>Untuk mengakses modul, Anda harus login <br>";
-	echo "<a href=../../index.php><b>LOGIN</b></a></center>";
+		echo "
+			<link href='style.css' rel='stylesheet' type='text/css'>
+			<center>Untuk mengakses modul, Anda harus login <br>
+			<a href=../../index.php><b>LOGIN</b></a></center>
+		";
 	}
 	else { ?>
 
@@ -33,15 +34,13 @@
 			?>
 
 				<article style="max-width:660px;" class="module width_3_quarter">
-				<header><h3 class="tabs_involved">Informasi Bimbel</h3>
-					
-				</header>
+				<header><h3 class="tabs_involved">Informasi Bimbel</h3></header>
 
 				<table class='display' id='dataTable'>
 				<thead> 
 					<tr>  
 						<th>No</th>
-						<th>Nama</th> 
+						<th>Keterangan</th> 
 						<th>Actions</th> 
 					</tr> 
 				</thead> 
@@ -73,15 +72,10 @@
 			
 			<article style="min-width:260px;" class="module width_quarter">
 				<header><h3>Post Informasi Bimbel</h3></header>
-				<form method='POST' enctype='multipart/form-data' action='modul/mod_hubungikami/aksi_hubungikami.php?module=hubungikami&act=insertnew'>	
+				<form method='POST' enctype='multipart/form-data' action='modul/mod_informasi_bimbel/aksi_informasi_bimbel.php?module=informasi-bimbel&act=insertnew'>	
 					<div class="p-1">
-						<label for="" class="d-block">Alamat :</label>
-						<textarea class="p-1 w-90" name="alamat" id="" cols="30" rows="10" placeholder="Masukan alamat ..." required=""></textarea>
-					</div>
-					<div class="p-1">
-						<label for="" class="d-block">Icon :</label>
-						<input type="file" name="fupload" required>
-						<span class="d-block">*) Image size 40 x 40px. Type Img : JPEG</span>
+						<label for="" class="d-block">keterangan :</label><br>
+						<input  class="p-1 w-90" name="texts" placeholder="Dapat informasi bimbel dari ..." required="">
 					</div>
 					<footer>
 						<div class="submit_link">
@@ -93,30 +87,20 @@
 
 			<?php break; 
 			case"edit":
-				$g= get_one("SELECT * FROM hubungikami WHERE id_hubungikami='$_GET[id]'");
+				$g= get_one("SELECT * FROM get_informations WHERE get_information_id='{$_GET["id"]}' ");
 			
 			?>
 			
 			<article class="module width_quarter">
-				<header><h3 class="tabs_involved">Edit Hubungi Kami</h3>
-					
+				<header>
+					<h3 class="tabs_involved">Edit Hubungi Kami</h3>
 					<input style="float:right; margin-top:5px;margin-right:10px;" type='button'  class='tombol' value='Back' onclick='self.history.back()'>
-					
 				</header>
-				<form method='POST' enctype='multipart/form-data' action='modul/mod_hubungikami/aksi_hubungikami.php?module=hubungikami&act=update'>
-					<input type='hidden' name='id' value='<?php echo"$g[id_hubungikami]" ?>'>
+				<form method='POST' enctype='multipart/form-data' action='modul/mod_informasi_bimbel/aksi_informasi_bimbel.php?module=informasi-bimbel&act=update'>
+					<input type='hidden' name='id' value='<?php echo $g['get_information_id'] ?>'>
 					<div class="p-1">
-						<label class="d-block">Alamat :</label>
-						<textarea class="w-90 p-1" name="alamat" id="" cols="30" rows="10" placeholder="Masukan alamat ..." required=""><?php echo"$g[alamat]" ?></textarea>
-					</div>
-					<div class="p-1">
-						<label class="d-block">Icon :</label>
-						<img width="30px" style="margin-left:5px;" src="../joimg/hubungikami/<?php echo"$g[gambar]" ?>">
-					</div>
-					<div class="p-1">
-						<label class="d-block">Change Icon :</label>
-						<input type="file" name="fupload">
-						<span class="d-block">*) Image size 40 x 40px.</span>
+						<label class="d-block">Keterangan :</label><br>
+						<input value="<?php echo $g['texts'] ?>" class="p-1 w-90" name="texts" placeholder="Dapat informasi bimbel dari ..." required="">
 					</div>
 					<footer>
 						<div class="submit_link">

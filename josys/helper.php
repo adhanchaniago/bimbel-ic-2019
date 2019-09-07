@@ -30,17 +30,39 @@ function count_rows($query){
 	$count_num = mysql_num_rows(mysql_query($query));
 	return $count_num;
 }
-
 //Function Insert and Update
 function insert_update($table,$fields,$id=NULL)
 {
-    if($id===NULL)
-    {
-        $sql="INSERT INTO $table (id) VALUES(NULL);UPDATE $table SET $fields WHERE id = LAST_INSERT_ID()";
-    }else{
-        $sql="UPDATE $table SET $fields WHERE id = $id";
-    }
-    return $sql;
+	if ( is_array($fields) ) {
+		$sql= "";
+		if($id===NULL){
+			$sql .= "INSERT INTO `{$table}`(";
+			foreach ($fields as $key => $value) {
+				$sql .= "`{$key}`,";	
+			}
+
+			$sql= substr($sql,0,-1).") VALUES ("; 
+			foreach ($fields as $key => $value) {
+				$sql .= "'{$key}',";	
+			}
+			$sql= substr($sql,0,-1).");"; 
+			// $sql= "SELECT LAST_INSERT_ID();"; #for get last id
+
+		}else{
+			$sql .= "UPDATE `{$table}` SET ";
+			foreach ($fields as $key => $value) {
+				$sql .= "`{$key}`='{$value}',"; 
+			}
+			$sql = substr($sql,0,-1)." WHERE {$id}";
+		}
+	}
+
+    return mysql_query($sql);
+}
+
+function delete($sql)
+{
+	return mysql_query($sql);
 }
 
 //Function Get Full URL 

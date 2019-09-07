@@ -1,99 +1,74 @@
 <?php
 session_start();
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])){
-  echo "<link href='style.css' rel='stylesheet' type='text/css'>
- <center>Untuk mengakses modul, Anda harus login <br>";
-  echo "<a href=../../index.php><b>LOGIN</b></a></center>";
+	echo "
+		<link href='style.css' rel='stylesheet' type='text/css'>
+		<center>Untuk mengakses modul, Anda harus login <br>
+		<a href=../../index.php><b>LOGIN</b></a></center>
+	";
 }
 else{
-include "../../../josys/koneksi.php";
-include "../../../josys/fungsi_thumb.php";
+	include_once "../../../josys/koneksi.php";
+	include_once "../../../josys/helper.php";
 
-$module=$_GET[module];
-$act=$_GET[act];
+	$module=$_GET['module'];
+	$act=$_GET['act'];
 
-// Update sosmed
-if ($module=='hubungikami' AND $act=='update'){
-		
-		  $lokasi_file    = $_FILES['fupload']['tmp_name'];
-		  $tipe_file      = $_FILES['fupload']['type'];
-		  $nama_file      = $_FILES['fupload']['name'];
-		  $acak           = rand(000000,999999);
-		  $nama_file_unik = $acak.$nama_file; 
-		  
-		if(!empty($lokasi_file)){
-			
-			if ($tipe_file != "image/jpeg" AND $tipe_file != "image/pjpeg" AND $tipe_file != "image/gif" AND $tipe_file != "image/png"){?>
-		    <script>window.alert("Upload Gagal, Pastikan File yang di Upload bertipe *.JPG, *.GIF, *.PNG");
-		        window.location=("../../media.php?module=<?php echo $module.'&act=edit&id='.$_POST['id'] ?>")</script>;
-		    <?php die();}
-		  
-			$tampil=mysql_query("SELECT * FROM hubungikami WHERE id_hubungikami='$_POST[id]'");
-			$ex=mysql_fetch_array($tampil);
-				if($ex['gambar'] != ''){
-					unlink("../../../joimg/hubungikami/$ex[gambar]");
-				}
-			
-			UploadHubungikami($nama_file_unik);
 
-			mysql_query("UPDATE hubungikami SET 	alamat 	= '$_POST[alamat]',
-											gambar = '$nama_file_unik'
-		                            WHERE id_hubungikami  = '$_POST[id]'");
-		                          //  echo $sql; exit;
-		}
-		else{
-			mysql_query("UPDATE hubungikami SET 	alamat = '$_POST[alamat]'
-								WHERE id_hubungikami  = '$_POST[id]'");
-		}
-  header('location:../../media.php?module='.$module);
-}
-// Hapus Sosmed
-if ($module=='hubungikami' AND $act=='hapus'){
-
-		$tampil=mysql_query("SELECT * FROM hubungikami WHERE id_hubungikami='$_GET[id]'");
-		$ex=mysql_fetch_array($tampil);
-
-		if($ex[gambar] != ''){
-			unlink("../../../joimg/hubungikami/$ex[gambar]");
-			mysql_query("DELETE FROM hubungikami WHERE id_hubungikami='$_GET[id]'");
+	# store informasi bimbel
+	if ($module=='informasi-bimbel' AND $act=='insertnew'){
+		$array_post= [
+			'texts'=> $_POST['texts']
+		];
+		if ( insert_update("get_informations",$array_post) ) {
+			echo "
+				<script>alert('Data berhasil dihapus');window.history.back();</script>
+			";
 		}else{
-			mysql_query("DELETE FROM hubungikami WHERE id_hubungikami='$_GET[id]'");
+			echo "
+				<script>alert('Data gagal dihapus');window.history.back();</script>
+			";
 		}
-		header('location:../../media.php?module='.$module);
-}
+	}
 
-// Update Tambah sosmed
-if ($module=='hubungikami' AND $act=='insertnew'){
-/*  
-	mysql_query("INSERT INTO sosmed(nama,
-									link) 
-                            VALUES('$_POST[nama]',
-									'$_POST[link]')");
-	header('location:../../media.php?module='.$module);
-*/
-		  	$lokasi_file    = $_FILES['fupload']['tmp_name'];
-			$tipe_file      = $_FILES['fupload']['type'];
-			$nama_file      = $_FILES['fupload']['name'];
-			$acak           = rand(000000,999999);
-			$nama_file_unik = $acak.$nama_file; 
-
-			if(!empty($lokasi_file)){
-
-			if ($tipe_file != "image/jpeg" AND $tipe_file != "image/pjpeg" AND $tipe_file != "image/gif" AND $tipe_file != "image/png"){?>
-			<script>window.alert("Upload Gagal, Pastikan File yang di Upload bertipe *.JPG, *.GIF, *.PNG");
-			    window.location=("../../media.php?module=<?php echo $module.'&act=edit&id='.$_POST['id'] ?>")</script>;
-			<?php die();}
-
-			UploadHubungikami($nama_file_unik);
-	  
-			mysql_query("INSERT INTO hubungikami(alamat, gambar) 
-								VALUES('$_POST[alamat]', '$nama_file_unik')");
+	# update informasi bimbel
+	if ( $module=='informasi-bimbel' AND $act=='update' ) {
+		$array_post= [
+			'texts'=> $_POST['texts']
+		];
+		if ( insert_update("get_informations",$array_post,"get_information_id='{$_POST['id']}'") ) {
+			echo "
+				<script>alert('Data berhasil diubah');window.history.go(-2)</script>
+			";
 		}else{
-			mysql_query("INSERT INTO hubungikami(alamat) 
-								VALUES('$_POST[alamat]')");
+			echo "
+				<script>alert('Data gagal diubah');window.history.back();</script>
+			";
 		}
-		
-		header('location:../../media.php?module='.$module);
-}
+	}
+
+	# delete informasi bimbel
+	if ($module=='informasi-bimbel' AND $act=='hapus'){
+		# check foreign key
+		$daftar_online_num_rows = count_rows("SELECT * FROM daftar_online WHERE get_information_id='{$_GET['id']}' ");
+		if ( $daftar_online_num_rows > 0 ) {
+			echo "
+				<script>alert('Maaf data ini tidak bisa dihapus');window.history.back();</script>
+			";
+
+		} else {
+			# no foreign key delete this
+			if ( delete("DELETE FROM get_informations WHERE get_information_id='{$_GET['id']}' ") ) {
+				echo "
+					<script>alert('Data berhasil dihapus');window.history.back();</script>
+				";
+			}else{
+				echo "
+					<script>alert('Data gagal dihapus');window.history.back();</script>
+				";
+			}
+			
+		}
+	}
 }
 ?>
