@@ -49,12 +49,12 @@ $(document).ready( function () {
 			<tbody> 
 			<?php 	
 				$no=1;
-				$room = mysql_query("SELECT * FROM daftar_online ORDER BY daftar_id DESC");
-				while($r=mysql_fetch_assoc($room)){
+				$rows = get_all("SELECT * FROM daftar_online ORDER BY daftar_id DESC");
+				foreach ($rows as $key => $r) {
 				?>
 				<tr>  
     				<td align="center"><?php echo"$no" ?></td> 
-    				<td align="center"><img src="../joimg/daftar-online/<?php echo"$r[foto_peserta]" ?>" style="width: 137px;"></td> 
+    				<td align="center"><?php echo ($r['foto_peserta']==''? '&nbsp;' : (file_exists("../joimg/daftar-online/{$r['foto_peserta']}") ? "<img src='../joimg/daftar-online/{$r['foto_peserta']}' style='height: 50px;'>" : '&nbsp;' ) ) ?></td> 
     				<td align="center"><?php echo"$r[nama_peserta]" ?></td> 
     				<td align="center"><?php echo"$r[jenis_kelamin]" ?></td> 
     				<td align="center"><?php echo"$r[email]"; ?></td> 
@@ -70,20 +70,22 @@ $(document).ready( function () {
 		
 		<?php break; 
 		case "edit":
-			$room = mysql_query("SELECT *
-FROM
-   tb_asrama
-    INNER JOIN daftar_online 
-        ON (tb_asrama.asrama_id = daftar_online.asrama_id)
-    INNER JOIN tb_kelas 
-        ON (tb_kelas.kelas_id = daftar_online.kelas_id)
-    INNER JOIN tb_bimbingan 
-        ON (tb_bimbingan.bimbingan_id = daftar_online.bimbingan_id)
-    INNER JOIN tb_program 
-        ON (tb_program.program_id = daftar_online.program_id)
-    INNER JOIN tb_tempatprogram 
-        ON (tb_tempatprogram.tempat_program_id = daftar_online.tempat_program_id) WHERE daftar_online.daftar_id='$_GET[id]'");
-			$r=mysql_fetch_assoc($room);
+			$r = get_one("SELECT *
+					FROM
+					tb_asrama
+						LEFT JOIN daftar_online 
+							ON (tb_asrama.asrama_id = daftar_online.asrama_id)
+						LEFT JOIN tb_kelas 
+							ON (tb_kelas.kelas_id = daftar_online.kelas_id)
+						LEFT JOIN tb_bimbingan 
+							ON (tb_bimbingan.bimbingan_id = daftar_online.bimbingan_id)
+						LEFT JOIN tb_program 
+							ON (tb_program.program_id = daftar_online.program_id)
+						LEFT JOIN tb_tempatprogram 
+							ON (tb_tempatprogram.tempat_program_id = daftar_online.tempat_program_id)
+						LEFT JOIN get_informations
+							ON get_informations.get_information_id=daftar_online.get_information_id 
+						WHERE daftar_online.daftar_id='$_GET[id]'");
 			//$tgl = tgl_amerika($r['tanggal']);
 		?>
 		<article style="min-width:500px; float:none;" class="module width_quarter">
@@ -115,6 +117,7 @@ FROM
 							<tr><td><label>Kelas</label></td><td>:</td><td><?php echo"$r[kelas_name]" ?></td></tr>
 							<tr><td><label>Tempat Program</label></td><td>:</td><td><?php echo"$r[tempat_program_name]" ?></td></tr>
 							<tr><td><label>Asrama</label></td><td>:</td><td><?php echo"$r[asrama_name]" ?></td></tr>
+							<tr><td><label>Saya dapat info bimbel dari</label></td><td>:</td><td><?php echo"$r[texts]" ?></td></tr>
 							<!-- <tr><td style="vertical-align: top;"><label>Catatan</label></td><td style="vertical-align: top;">:</td><td><?php //echo"$r[catatan]" ?></td></tr>
 							 --><tr><td><label>Date</label></td><td>:</td><td><?php echo"$r[date]"; ?></td></tr>
 							<!-- <tr><td><label>Approve</label></td><td>:</td>
