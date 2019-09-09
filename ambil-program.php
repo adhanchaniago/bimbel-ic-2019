@@ -11,7 +11,7 @@ FROM
         ON (tb_bimbingan.bimbingan_id = tb_tmp_program.bimbingan_id)
     INNER JOIN tb_program 
         ON (tb_program.program_id = tb_tmp_program.program_id) WHERE tb_tmp_program.bimbingan_id='$bimbingan'");
-echo "<option>-- Pilih Program --</option>";
+echo "<option selected disabled>-- Pilih Program --</option>";
 while($k = mysql_fetch_array($program)){
 
     echo "<option value=\"".$k['program_id']."\">".$k['program_name']."</option>\n";

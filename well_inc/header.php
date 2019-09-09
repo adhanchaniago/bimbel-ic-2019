@@ -17,7 +17,7 @@
         </a>
     </div>
 </div>
-<div class="o-site-header">
+<div class="o-site-header" id="myHeader">
     <div class="container">
         <ul class="menu">
             <li <?php if($_GET['mod']=='home'){ echo 'class="current-menu-item"';} ?>>

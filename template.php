@@ -105,6 +105,25 @@ img.emoji {
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <!--end jquery UI -->
+    <style>
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+        .sticky > .container {
+            padding-top: 0px !important;
+        }
+        .sticky > .container > .menu {
+            text-align: center !important;
+            margin: 1rem 0px -15px 0;
+        }
+        
+        .sticky + .content {
+            padding-top: 102px;
+        }
+    </style>
 </head>
 
 <script type="text/javascript">
@@ -148,19 +167,9 @@ $(document).ready(function(){
         }
     });
   });
-
-
-
-
+    
 });
 
-$( function() {
-    $( "#datepicker" ).datepicker({
-      yearRange: '1990:2030',
-      changeMonth: true,
-      changeYear: true
-    });
-} );
 
 </script>
 <script>(function(d, s, id) {
@@ -176,7 +185,7 @@ $( function() {
 ?>
 
         <link rel="stylesheet" href="data-piker/public/css/default.css" type="text/css">
-        <link type="text/css" rel="stylesheet" href="libraries/syntaxhighlighter/public/css/shCoreDefault.css">
+        <!--<link type="text/css" rel="stylesheet" href="libraries/syntaxhighlighter/public/css/shCoreDefault.css">-->
 <?php 
 }else{
 
@@ -306,15 +315,38 @@ $( function() {
 <?php
   if($_GET['mod']=='daftar-online'){
 ?>
-        <!-- <script type="text/javascript" src="data-piker/public-oke/javascript/jquery-1.12.0.js"></script> -->
-        <!-- <script type="text/javascript" src="data-piker/public/javascript/zebra_datepicker.js"></script> -->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script type="text/javascript" src="data-piker/public-oke/javascript/core.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--<script type="text/javascript" src="data-piker/public-oke/javascript/core.js"></script>-->
+    <script>
+        $( "#datepicker" ).datepicker({
+            yearRange: '1990:2030',
+            changeMonth: true,
+            changeYear: true
+        });
+    </script>
 <?php
   }else{
     
   }
 ?>
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+		$('form').on('submit',function(e){
+			e.preventDefault()
+			
+		})
+    </script>
 </body>
 </html>

@@ -103,8 +103,8 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
     <tr>
         <td>Bimbingan</td><td>:</td>
         <td>
-                <select name="bimbingan" id="bimbingan">
-                    <option value="">- Pilih Bimbingan -</option>
+                <select name="bimbingan" id="bimbingan" required="">
+                    <option value="" selected="" disabled="">- Pilih Bimbingan -</option>
                     <?php
                         //mengambil nama-nama propinsi yang ada di database
                         $rows = get_all("SELECT * FROM tb_bimbingan ORDER BY bimbingan_id DESC");
@@ -119,8 +119,8 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
     <tr>
         <td>Program</td><td>:</td>
         <td>
-                <select name="program" id="program">
-                    <option value="">- Pilih Program -</option>
+                <select name="program" id="program" required="">
+                    <option value="" selected="" disabled="">- Pilih Program -</option>
                 </select>
         </td>
     </tr>
@@ -128,8 +128,8 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
     <tr>
         <td>Kelas</td><td>:</td>
         <td>
-                <select name="kelas" id="kelas">
-                    <option value="">- Pilih Kelas -</option>
+                <select name="kelas" id="kelas" required="">
+                    <option value="" selected="" disabled="">- Pilih Kelas -</option>
                 </select>
         </td>
     </tr>
@@ -137,8 +137,8 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
     <tr>
         <td>Tempat Program</td><td>:</td>
         <td>
-                <select name="tempat_program" id="tempat_program">
-                    <option value="">- Pilih Tempat Program -</option>
+                <select name="tempat_program" id="tempat_program" required="">
+                    <option value="" selected="" disabled="">- Pilih Tempat Program -</option>
                     <?php
                     $rows= get_all("SELECT * FROM tb_tempatprogram ORDER BY tempat_program_id DESC ");
                     foreach ($rows as $key => $value) {
@@ -152,8 +152,8 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
     <tr>
         <td>Asrama</td><td>:</td>
         <td>
-            <select name="asrama" id="asrama">
-                <option value=""> - Pilih Asrama - </option>
+            <select name="asrama" id="asrama" required="">
+                <option value="" selected="" disabled=""> - Pilih Asrama - </option>
                    <?php
                     //mengambil nama-nama propinsi yang ada di database
                     $rows = get_all("SELECT * FROM tb_asrama ORDER BY asrama_id DESC");
@@ -168,19 +168,18 @@ Pendaftaran online Anda berhasil. Bukti Pendaftaran online akan dikirim via e-ma
 
     <tr>
         <td>Saya dapat info bimbel dari</td>
-        <td colspan="2">:</td>
+        <td>:</td>
+        <td>
+            <select name="get_information_id" required="">
+                <?php
+                    $rows= get_all("SELECT * FROM get_informations");
+                    foreach ($rows as $key => $value) {
+                        echo "<option value='{$value['get_information_id']}'>{$value['texts']}</option>";
+                    }
+                ?>
+            </select>
+        </td>
     </tr>
-    <?php
-        $rows= get_all("SELECT * FROM get_informations");
-        foreach ($rows as $key => $value) {
-            echo "
-            <tr>
-                <td colspan='2'></td>
-                <td><input type='radio' name='get_information_id' value='{$value['get_information_id']}'> {$value['texts']}</td>
-            </tr>
-            ";
-        }
-    ?>
     
      <tr>
         <td></td>

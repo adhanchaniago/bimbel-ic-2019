@@ -150,9 +150,22 @@
                     </table> -->
                 <!-- </div> -->
                 <!-- end left footer bottom -->
+                
+                <div>
+                    <div class="m-social cs-social" style="text-align:center !important">
+                        <p class="title">Connect with us</p>
+                        <ul>
+                            <li><a href="http://twitter.com/Indo_College" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="http://www.facebook.com/bimbelstanjaminan" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCq8G3UVU7aqEqXL9F2uJG7Q" target="_blank" class="youtube"><i class="fa fa-youtube-play"></i></a></li>
+                            <li><a href="https://www.instagram.com/indonesiacollege_yogya/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                        <p class="title">&copy; 2016 IC. All Rights Reserved. Developed by <a style="color:#eee" href="http://jogjasite.com/">JogjaSite</a></p>
+                    </div>
+                </div>
 
                 <!-- right footer bottom -->
-                <div class="column">
+                <!--<div class="column">
                     <div class="m-social cs-social">
                         <p class="title">Connect with us</p>
                         <ul>
@@ -163,7 +176,7 @@
                         </ul>
                         <p class="copyright" style="text-align: right;">&copy; 2016 IC. All Rights Reserved. Developed by <a href="http://jogjasite.com/">JogjaSite</a></p>
                     </div>
-                </div>
+                </div>-->
                 <!-- end right footer bottom -->
             
             </div>

@@ -11,7 +11,7 @@ FROM
         ON (tb_bimbingan.bimbingan_id = tb_tmp_asrama.bimbingan_id)
     INNER JOIN tb_asrama 
         ON (tb_asrama.asrama_id = tb_tmp_asrama.asrama_id) WHERE tb_tmp_asrama.bimbingan_id='$bimbingan'");
-echo "<option>-- Pilih Asrama --</option>";
+echo "<option selected disabled>-- Pilih Asrama --</option>";
 while($k = mysql_fetch_assoc($asrama)){
 
     echo "<option value=\"".$k['asrama_id']."\">".$k['asrama_name']."</option>\n";
