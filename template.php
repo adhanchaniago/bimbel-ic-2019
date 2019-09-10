@@ -343,10 +343,10 @@ $(document).ready(function(){
             header.classList.remove("sticky");
           }
         }
-		$('form').on('submit',function(e){
-			e.preventDefault()
+		// $('form').on('submit',function(e){
+		// 	e.preventDefault()
 			
-		})
+		// })
     </script>
 </body>
 </html>
